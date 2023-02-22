@@ -25,10 +25,10 @@ This Template requires https://nodejs.org/
 
 Clone this repository, change the path to the root directory of the template, install the dependencies, after that is done update your credentials in the .env file and start coding. 
 
-sh
+```sh
 npm i
 npm start
-
+```
 
 
 
