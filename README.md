@@ -1,4 +1,4 @@
-# Node Express.js MongoDB Skeleton
+# Node Express.js MongoDB Starter Template
 
 This app is a template of a node app with proper folder structure defined and important dependencies pre-installed. This template can be used to save some time when setting up a new node project. You can look at the guide below to understand how to set it up.
 
