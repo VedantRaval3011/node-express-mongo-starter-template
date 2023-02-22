@@ -18,6 +18,18 @@ The following modules are installed in this template of node.
 
 
 
+## Folder Structure
+
+This template follows the Service Repository pattern structure. 
+
+- /src - this folder contains all the source code
+- /src/config - this folder contains all the config files required to run the project
+- /src/controllers - this folder contains the functions which deals with the services of the project
+- /src/middleware - this folder contains all the middleware functions used in the node project
+- /src/models - this folder contains all the model for schemas used in the project
+- /src/routes - this folder contains various files having routing configuration
+- /src/services - this folder contains all the functions which act as services (mostly logical and database related part of the project)
+- /src/validations - this folder contains all the validation files require for this project
 
 ## Installation
 
@@ -29,7 +41,3 @@ Clone this repository, change the path to the root directory of the template, in
 npm i
 npm start
 ```
-
-
-
-
