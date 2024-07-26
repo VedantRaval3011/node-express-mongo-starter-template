@@ -35,6 +35,7 @@ let userSchema = new Schema(
   {
     collection: "users",
     timestamps: true,
+    strict: false,
   }
 );
 

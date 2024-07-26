@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const multer = require('multer');
 const cors = require("cors");
 const mongoose = require("mongoose");
 const config = require("./config/config");
@@ -10,8 +11,9 @@ const config = require("./config/config");
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/uploads', express.static('uploads')); //middleware for uploads
 
-//Setting up Mongoose
+//Setting up Mongoose 
 mongoose.connect(config.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -22,13 +24,27 @@ db.once("open", () => {
   console.log("Connected to MongoDB");
 });
 
+//Storage (File upload handling)
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+const upload = multer({ storage: storage });
+
+
 //Routes
-const appRoutes = require("./routes/app.route")
-app.use("/", appRoutes)
+const authRoute = require("./routes/auth.route")
+app.use("/api",upload.single('profilePicture'), authRoute)
 
 //Server Listening
-app.listen(config.PORT, () => {
-  console.log(`Server started on port ${config.PORT}`);
+const port = config.PORT || 5000;
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
 });
 
 //Export Server
