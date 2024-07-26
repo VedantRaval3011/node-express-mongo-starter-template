@@ -39,10 +39,11 @@ const upload = multer({ storage: storage });
 
 //Routes
 const authRoute = require("./routes/auth.route")
+const userRoutes = require("./routes/user.route")
 app.use("/api",upload.single('profilePicture'), authRoute)
-
+app.use('/api/user', userRoutes);
 //Server Listening
-const port = config.PORT || 5000;
+const port = config.PORT || 5001;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
